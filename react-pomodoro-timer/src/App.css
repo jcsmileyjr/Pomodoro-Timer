@@ -64,6 +64,37 @@
   opacity: .3;
 }
 
+.clock__checkIcon--style {
+  max-height: 30px;
+}
+
 .clock__gearIcon--style:hover {
   opacity: 1;
+}
+
+.gearInputs--container {
+  display: flex;
+  flex-direction: column;
+}
+
+.show {
+  display: flex;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}
+
+label {
+  color: white;
+  display: block;
+}
+
+input {
+  max-width: 50px;
+}
+
+#updateMinute {
+  margin-bottom: 10px;
 }
