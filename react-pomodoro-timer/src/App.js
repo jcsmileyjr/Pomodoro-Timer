@@ -1,6 +1,6 @@
 import "./App.css";
 import Gear from "./assets/gear.svg";
-import React, {useState, useEffect, useCallback} from 'react';
+import React, { useState, useEffect, useCallback } from "react";
 
 /**
  *
@@ -16,30 +16,38 @@ import React, {useState, useEffect, useCallback} from 'react';
  * HARD PART: Ring around timer should go from red to green.
  */
 function App() {
-  const [counter, setCounter] = useState(true);
+  const [counter, setCounter] = useState(false);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(60);
 
+  // Decrease the seconds and minute every second.
   const decliningTimer = useCallback(() => {
-    if(minutes <= 0 && seconds <= 0){
+    if (minutes <= 0 && seconds <= 0) {
       setCounter(false);
       setSeconds("00");
       setMinutes(0);
       return;
     }
     setSeconds(seconds - 1);
-    if(seconds <= 0){
-      setMinutes(minutes -1)
+    if (seconds <= 0) {
+      setMinutes(minutes - 1);
       setSeconds(59);
     }
-  },[seconds, minutes]);
+  }, [seconds, minutes]);
 
   useEffect(() => {
-    const timer =
-      counter && setInterval(() => decliningTimer(), 100);
-      return () => clearInterval(timer);
-    }, [seconds, minutes, decliningTimer, counter]);
+    const timer = counter && setInterval(() => decliningTimer(), 1000);
+    return () => clearInterval(timer);
+  }, [seconds, minutes, decliningTimer, counter]);
 
+  // Allow the user to stop and start the timer
+  const timerControl = () => {
+    if (counter) {
+      setCounter(false);
+    } else {
+      setCounter(true);
+    }
+  };
 
   return (
     <div className="App">
@@ -49,7 +57,7 @@ function App() {
           <p>:</p>
           <p id="seconds">{seconds}</p>
         </div>
-        <button className="clock__primaryButton--style" type="button">
+        <button className="clock__primaryButton--style" type="button" onClick={()=> timerControl()}>
           START
         </button>
         <button className="clock__gearButton--style" type="button">
