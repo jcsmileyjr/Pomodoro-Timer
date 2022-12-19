@@ -1,1 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+@font-face {
+  font-family: "bebas";
+  src: url('./assets/fonts/bebasneue-book-webfont.woff') format('woff'),
+      url('./assets/fonts/bebasneue-book-webfont.woff2') format('woff2');
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: #2B2A30;
+}
 
+.clock--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  border: 5px solid #900A0A;
+}
+
+.timer--container {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 60px;
+  font-family: bebas;
+}
+
+.timer--container > p {
+  margin-bottom: 0;
+}
+
+.clock__primaryButton--style {
+  background: #2B2A30;
+  color: white;
+  border: none;
+  max-width: 70px;
+  align-self: center;
+  padding: 5px;
+  margin-top: 15px;
+  letter-spacing: 2px;
+  font-family: Montserrat , sans-serif;
+}
+
+.clock__gearButton--style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #2B2A30;
+  border:none;
+  margin-top: 15px;
+  max-width: 70px;
+  align-self: center;
+  padding: 5px;  
+}
+
+.clock__gearIcon--style {
+  max-height: 15px;
+  opacity: .3;
+}
+
+.clock__gearIcon--style:hover {
+  opacity: 1;
+}
