@@ -1,6 +1,6 @@
 import "./App.css";
 import Gear from "./assets/gear.svg";
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 
 /**
  *
@@ -20,13 +20,7 @@ function App() {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(60);
 
-  useEffect(() => {
-    const timer =
-      counter && setInterval(() => decliningTimer(), 100);
-      return () => clearInterval(timer);
-    }, [seconds, minutes]);
-
-  const decliningTimer = () => {
+  const decliningTimer = useCallback(() => {
     if(minutes <= 0 && seconds <= 0){
       setCounter(false);
       setSeconds("00");
@@ -38,7 +32,15 @@ function App() {
       setMinutes(minutes -1)
       setSeconds(59);
     }
-  }
+  },[seconds, minutes]);
+
+  useEffect(() => {
+    const timer =
+      counter && setInterval(() => decliningTimer(), 100);
+      return () => clearInterval(timer);
+    }, [seconds, minutes, decliningTimer, counter]);
+
+
   return (
     <div className="App">
       <div className="clock--container">
