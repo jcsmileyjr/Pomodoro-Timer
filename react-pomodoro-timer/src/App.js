@@ -57,7 +57,7 @@ function App() {
         <div className={`timer--container ${showGears ? "hide" : ""}`}>
           <p id="minutes">{minutes}</p>
           <p>:</p>
-          <p id="seconds">{seconds}</p>
+          <p id="seconds">{seconds < 10 && 0}{seconds}</p>
         </div>
         <button
           className={`clock__primaryButton--style ${showGears ? "hide" : ""}`}
