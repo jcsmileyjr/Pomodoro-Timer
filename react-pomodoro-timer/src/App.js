@@ -1,5 +1,6 @@
 import "./App.css";
 import Gear from "./assets/gear.svg";
+import React, {useState, useEffect} from 'react';
 
 /**
  *
@@ -15,13 +16,36 @@ import Gear from "./assets/gear.svg";
  * HARD PART: Ring around timer should go from red to green.
  */
 function App() {
+  const [counter, setCounter] = useState(true);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(60);
+
+  useEffect(() => {
+    const timer =
+      counter && setInterval(() => decliningTimer(), 100);
+      return () => clearInterval(timer);
+    }, [seconds, minutes]);
+
+  const decliningTimer = () => {
+    if(minutes <= 0 && seconds <= 0){
+      setCounter(false);
+      setSeconds("00");
+      setMinutes(0);
+      return;
+    }
+    setSeconds(seconds - 1);
+    if(seconds <= 0){
+      setMinutes(minutes -1)
+      setSeconds(59);
+    }
+  }
   return (
     <div className="App">
       <div className="clock--container">
         <div className="timer--container">
-          <p id="minutes">15</p>
+          <p id="minutes">{minutes}</p>
           <p>:</p>
-          <p id="seconds">00</p>
+          <p id="seconds">{seconds}</p>
         </div>
         <button className="clock__primaryButton--style" type="button">
           START
