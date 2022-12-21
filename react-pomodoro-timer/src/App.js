@@ -4,8 +4,8 @@ import Check from "./assets/check.svg";
 import React, { useState, useEffect, useCallback } from "react";
 
 /**
- *
- * @returns
+ * Basic pomodoro timer that displays a decreasing minutes and seconds
+ * while someone work on a problem.
  *
  * TODO:
  * Setup initial basic HTML
@@ -17,12 +17,15 @@ import React, { useState, useEffect, useCallback } from "react";
  * HARD PART: Ring around timer should go from red to green.
  */
 function App() {
-  const [counter, setCounter] = useState(false);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(60);
-  const [showGears, setShowGears] = useState(false);
+  const [counter, setCounter] = useState(false); // Start & Stop the timer
+  const [minutes, setMinutes] = useState(15); // stores the number of remaining minutes
+  const [seconds, setSeconds] = useState(0); // stores the number of remaining seconds
+  const [showGears, setShowGears] = useState(false); // Show & Hide the "set new time" using the gear icon.
 
-  // Decrease the seconds and minute every second.
+  // 
+  /**
+   * Decrease the seconds and minute on the Pomorodoro timer every second.
+   */
   const decliningTimer = useCallback(() => {
     if (minutes <= 0 && seconds <= 0) {
       setCounter(false);
@@ -37,6 +40,9 @@ function App() {
     }
   }, [seconds, minutes]);
 
+  /**
+   * This is the countdown functionality that updates seconds and minutes based on a declining interval
+   */
   useEffect(() => {
     const timer = counter && setInterval(() => decliningTimer(), 1000);
     return () => clearInterval(timer);
@@ -57,6 +63,7 @@ function App() {
         <div className={`timer--container ${showGears ? "hide" : ""}`}>
           <p id="minutes">{minutes}</p>
           <p>:</p>
+          {/* Displays an extra "0" in front of seconds that are less then ten */}
           <p id="seconds">{seconds < 10 && 0}{seconds}</p>
         </div>
         <button
