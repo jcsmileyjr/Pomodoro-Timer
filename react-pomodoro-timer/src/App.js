@@ -13,7 +13,8 @@ import React, { useState, useEffect, useCallback } from "react";
  * Add basic JavaScript for timer from 15 minutes
  * Add functionality to start/stop to timer
  * Add functionality when timer stops, alert message is shown
- * Add functionality where gear icon is click and user can chage minutes and seconds
+ * Add functionality when the gear icon is clicked, user can change minutes and seconds
+ * Add functionaliyt when the gear icon is clicked, the input elements are blank
  * HARD PART: Ring around timer should go from red to green.
  */
 function App() {
@@ -57,6 +58,12 @@ function App() {
     }
   };
 
+  // Clear the inputs within the Gears timer control inputs
+  const clearInputs = () => {
+    setSeconds(0);
+    setMinutes(15);
+  }
+
   return (
     <div className="App">
       <div className="clock--container">
@@ -76,7 +83,7 @@ function App() {
         <button
           className={`clock__gearButton--style ${showGears ? "hide" : "show"}`}
           type="button"
-          onClick={() => setShowGears(!showGears)}
+          onClick={() => {setShowGears(!showGears); clearInputs();}}
         >
           <img
             src={Gear}
@@ -104,7 +111,7 @@ function App() {
             onChange={(event) => setMinutes(event.target.value)}
           />
           <label htmlFor="updateSeconds">Seconds</label>
-          <input id="updateSeconds" type="number" />
+          <input id="updateSeconds" type="number" value={seconds} onChange={(event) => setSeconds(event.target.value)} />
         </div>
       </div>
     </div>
