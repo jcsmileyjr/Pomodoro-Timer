@@ -62,6 +62,7 @@ function App() {
   const clearInputs = () => {
     setSeconds(0);
     setMinutes(15);
+    setCounter(false);
   }
 
   return (
@@ -94,7 +95,7 @@ function App() {
         <button
           className={`clock__gearButton--style ${showGears ? "show" : "hide"}`}
           type="button"
-          onClick={() => setShowGears(!showGears)}
+          onClick={() => {setShowGears(!showGears); setCounter(true);}}
         >
           <img
             src={Check}
