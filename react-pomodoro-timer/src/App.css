@@ -23,6 +23,14 @@
   border: 5px solid #900A0A;
 }
 
+.tickingColor {
+  border: 5px solid #900A0A;
+}
+
+.finishedColor {
+  border: 5px solid #04ff25;
+}
+
 .timer--container {
   display: flex;
   justify-content: center;
