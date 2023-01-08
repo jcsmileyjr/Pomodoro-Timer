@@ -10,7 +10,7 @@ A future goal is to rebuild the project with TypeScript.
 
 ### GIFs of app in use
 
-![GIF of in use](./react-ecommerce-component/src/assets/demo-3.gif)
+![GIF of in use](/react-pomodoro-timer/src/assets/pomodoro-timer-demo-1.gif)
 
 ### How to run in development(Windows with NPM)
 1. Clone the repo.
