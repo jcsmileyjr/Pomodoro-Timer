@@ -45,7 +45,8 @@ function App() {
    * This is the countdown functionality that updates seconds and minutes based on a declining interval
    */
   useEffect(() => {
-    const timer = counter && setInterval(() => decliningTimer(), 1000);
+    let timer = counter && setInterval(() => decliningTimer(), 1000);
+    console.log(timer)
     return () => clearInterval(timer);
   }, [seconds, minutes, decliningTimer, counter]);
 
@@ -79,7 +80,7 @@ function App() {
           type="button"
           onClick={() => timerControl()}
         >
-          START
+          {counter?"STOP":"START"}
         </button>
         <button
           className={`clock__gearButton--style ${showGears ? "hide" : "show"}`}
