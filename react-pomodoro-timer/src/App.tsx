@@ -87,7 +87,7 @@ function App() {
           onClick={() => {setShowGears(!showGears); clearInputs();}}
         >
           <img
-            src={Gear}
+            src={String(Gear)}
             className="clock__gearIcon--style"
             alt="Gear icon"
           ></img>
@@ -98,7 +98,7 @@ function App() {
           onClick={() => {setShowGears(!showGears); setCounter(true);}}
         >
           <img
-            src={Check}
+            src={String(Check)}
             className="clock__checkIcon--style"
             alt="Check icon"
           ></img>
