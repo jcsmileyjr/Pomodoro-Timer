@@ -46,8 +46,7 @@ function App() {
    */
   useEffect(() => {
     let timer = counter && setInterval(() => decliningTimer(), 1000);
-    console.log(timer)
-    return () => clearInterval(timer);
+    return () => clearInterval(Number(timer));
   }, [seconds, minutes, decliningTimer, counter]);
 
   // Allow the user to stop and start the timer
