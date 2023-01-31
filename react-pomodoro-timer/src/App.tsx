@@ -1,5 +1,5 @@
 import "./App.css";
-import Gear from "./assets/gear.svg";
+import Gear from "../src/assets/gear.svg";
 import Check from "./assets/check.svg";
 import React, { useState, useEffect, useCallback } from "react";
 
@@ -30,7 +30,7 @@ function App() {
   const decliningTimer = useCallback(() => {
     if (minutes <= 0 && seconds <= 0) {
       setCounter(false);
-      setSeconds("0");
+      setSeconds(0);
       setMinutes(0);
       return;
     }
@@ -45,8 +45,8 @@ function App() {
    * This is the countdown functionality that updates seconds and minutes based on a declining interval
    */
   useEffect(() => {
-    const timer = counter && setInterval(() => decliningTimer(), 1000);
-    return () => clearInterval(timer);
+    let timer = counter && setInterval(() => decliningTimer(), 1000);
+    return () => clearInterval(Number(timer));
   }, [seconds, minutes, decliningTimer, counter]);
 
   // Allow the user to stop and start the timer
@@ -67,7 +67,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className={`clock--container ${seconds==='0' && minutes=== 0?'finishedColor':'tickingColor'}`}>
+      <div className={`clock--container ${seconds===0 && minutes=== 0?'finishedColor':'tickingColor'}`}>
         <div className={`timer--container ${showGears ? "hide" : ""}`}>
           <p id="minutes">{minutes}</p>
           <p>:</p>
@@ -79,7 +79,7 @@ function App() {
           type="button"
           onClick={() => timerControl()}
         >
-          START
+          {counter?"STOP":"START"}
         </button>
         <button
           className={`clock__gearButton--style ${showGears ? "hide" : "show"}`}
@@ -87,7 +87,7 @@ function App() {
           onClick={() => {setShowGears(!showGears); clearInputs();}}
         >
           <img
-            src={Gear}
+            src={String(Gear)}
             className="clock__gearIcon--style"
             alt="Gear icon"
           ></img>
@@ -98,7 +98,7 @@ function App() {
           onClick={() => {setShowGears(!showGears); setCounter(true);}}
         >
           <img
-            src={Check}
+            src={String(Check)}
             className="clock__checkIcon--style"
             alt="Check icon"
           ></img>
@@ -109,10 +109,10 @@ function App() {
             id="updateMinute"
             type="number"
             value={minutes}
-            onChange={(event) => setMinutes(event.target.value)}
+            onChange={(event) => setMinutes(Number(event.target.value))}
           />
           <label htmlFor="updateSeconds">Seconds</label>
-          <input id="updateSeconds" type="number" value={seconds} onChange={(event) => setSeconds(event.target.value)} />
+          <input id="updateSeconds" type="number" value={seconds} onChange={(event) => setSeconds(Number(event.target.value))} />
         </div>
       </div>
     </div>
