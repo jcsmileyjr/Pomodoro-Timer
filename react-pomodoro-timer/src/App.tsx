@@ -1,5 +1,5 @@
 import "./App.css";
-import Gear from "./assets/gear.svg";
+import Gear from "../src/assets/gear.svg";
 import Check from "./assets/check.svg";
 import React, { useState, useEffect, useCallback } from "react";
 
@@ -30,7 +30,7 @@ function App() {
   const decliningTimer = useCallback(() => {
     if (minutes <= 0 && seconds <= 0) {
       setCounter(false);
-      setSeconds("0");
+      setSeconds(0);
       setMinutes(0);
       return;
     }
@@ -67,7 +67,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className={`clock--container ${seconds==='0' && minutes=== 0?'finishedColor':'tickingColor'}`}>
+      <div className={`clock--container ${seconds===0 && minutes=== 0?'finishedColor':'tickingColor'}`}>
         <div className={`timer--container ${showGears ? "hide" : ""}`}>
           <p id="minutes">{minutes}</p>
           <p>:</p>
