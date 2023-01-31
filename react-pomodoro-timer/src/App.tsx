@@ -109,10 +109,10 @@ function App() {
             id="updateMinute"
             type="number"
             value={minutes}
-            onChange={(event) => setMinutes(event.target.value)}
+            onChange={(event) => setMinutes(Number(event.target.value))}
           />
           <label htmlFor="updateSeconds">Seconds</label>
-          <input id="updateSeconds" type="number" value={seconds} onChange={(event) => setSeconds(event.target.value)} />
+          <input id="updateSeconds" type="number" value={seconds} onChange={(event) => setSeconds(Number(event.target.value))} />
         </div>
       </div>
     </div>
