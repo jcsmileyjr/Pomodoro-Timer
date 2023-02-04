@@ -6,7 +6,7 @@ The challenge was to build a pomodoro timer based on the design given that allow
 2. Update the timer with new minutes and seconds
 3. Change the color of the border when the timer has finished
 
-A future goal is to rebuild the project with TypeScript. 
+This project has been converted into a TypeScript-React app.  
 
 ### GIFs of app in use
 
@@ -19,6 +19,7 @@ A future goal is to rebuild the project with TypeScript.
 4. When finish, type npm start
 
 ### Built with
+- TypeScript
 - React
 - Semantic HTML5 markup
 - CSS custom properties
